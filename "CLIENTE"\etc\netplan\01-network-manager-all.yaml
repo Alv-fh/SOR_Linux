@@ -1,1 +1,24 @@
+#Ahora en el cliente debemos de tener en la ens18 la dirección 193.168.3.2/24
+#Un router que será el servidor, es decir, la 193.168.3.220
+#Luego un dominio que será micentro.edu
+#Y pondremos de dns principal, el del servidor, y de secundario el de google
 
+
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens18:
+      addresses: [193.168.3.2/24]
+      routes:
+      - to: default
+        via: 193.168.3.220
+      nameservers:
+        search: [micentro.edu]
+        addresses: [193.168.3.220, 8.8.8.8]
+
+#Una vez hecho esto, ponemos:
+
+# sudo netplan generate
+# sudo netplan apply (2 veces)
