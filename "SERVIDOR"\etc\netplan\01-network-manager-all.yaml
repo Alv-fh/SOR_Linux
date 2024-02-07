@@ -1,4 +1,5 @@
-#Para empezar tenemos que saber que la primera tarjeta de red está en DCHP, y la segunda targeta de red, tiene la ip 193.168.3.220/24
+#Para empezar tenemos que saber que la primera tarjeta de red está en DCHP,
+#y la segunda targeta de red, tiene la ip 193.168.3.220/24
 #y nombre de dominio micentro.edu. Los DNS son 1.1.1.1 y 8.8.8.8
 #por lo tanto esta sería la configuración:
 
@@ -14,3 +15,14 @@ network:
           nameservers:        
             search: [micentro.edu]
             addresses: [1.1.1.1, 8.8.8.8]
+
+
+#Cuando guardemos el .yaml tendremos que usar los siguientes comandos:
+
+sudo netplan generate
+
+#Si no sale nada, significa que está bien, por lo tanto:
+
+sudo netplan apply
+
+#Para aplicar cambios, se hacen dos veces.
