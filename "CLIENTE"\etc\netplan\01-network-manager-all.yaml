@@ -22,3 +22,8 @@ network:
 
 # sudo netplan generate
 # sudo netplan apply (2 veces)
+
+#Ahora no tenemos Internet, entonces, ¿Qué hay que hacer?
+#Tenemos que poner el bit de forward a 1, para ello crearemos un script con este contenido
+
+
