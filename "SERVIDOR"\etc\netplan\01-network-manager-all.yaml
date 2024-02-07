@@ -19,10 +19,12 @@ network:
 
 #Cuando guardemos el .yaml tendremos que usar los siguientes comandos:
 
-sudo netplan generate
+#  sudo netplan generate
 
 #Si no sale nada, significa que está bien, por lo tanto:
 
-sudo netplan apply
+#  sudo netplan apply
 
 #Para aplicar cambios, se hacen dos veces.
+
+#Ahora tenemos que comprobar que tenemos Internet, entonces actualizaremos los paquetes.
