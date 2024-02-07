@@ -1,0 +1,17 @@
+#Crearemos en /home/usuario/services el siguiente código
+#Ahora crearemos un servicio de enrutamiento para que al iniciar la máquina, haga enrutamiento
+
+[Unit]
+Description=Script service
+[Service]
+ExecStart=/home/usuario/scripts/enruta.sh
+[Install]
+WantedBy=multi-user.target
+
+#Lo siguiente después de crearlo es hacer esta serie de comandos
+
+sudo systemctl enable /home/usuario/services/enruta.service
+sudo systemctl start /home/usuario/services/enruta.service
+sudo systemctl status /home/usuario/services/enruta.service
+
+#Luego se reinician las dos máquinas y listo
