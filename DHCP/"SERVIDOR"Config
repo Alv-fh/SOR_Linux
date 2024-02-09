@@ -14,13 +14,14 @@ subnet 193.168.3.0 netmask 255.255.255.0 {
 }
 
 }
-
+#====================================================================================================
 #Importante cargar el fichero, para ello:
 
 # sudo dhcp -t -cf /etc/dhcp/dhcpd.conf
 
 #Y ahora debemos de poner la tarjeta, para ello 
 # sudo nano /etc/default/isc-dhcp/server
+
 #Al entrar nos saldrá algo así:
 
 INTERFACESv4="ens19"
