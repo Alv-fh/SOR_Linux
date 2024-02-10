@@ -7,14 +7,14 @@
 network:
   version: 2
     renderer: NetworkManager
-      ethernets:
-        ens18:
-          dhcp4: true
-        ens19:
-          addresses: [193.168.3.220/24]
-          nameservers:        
-            search: [micentro.edu]
-            addresses: [1.1.1.1, 8.8.8.8]
+    ethernets:
+      ens18:
+        dhcp4: true
+      ens19:
+        addresses: [193.168.3.220/24]
+        nameservers:        
+          search: [micentro.edu]
+          addresses: [1.1.1.1, 8.8.8.8]
 
 #========================================================================================
 #Cuando guardemos el .yaml tendremos que usar los siguientes comandos:
