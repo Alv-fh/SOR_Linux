@@ -13,10 +13,6 @@ bash enruta.sh
 #En el (CLIENTE) se hace ping y debe de funcionar
 ping 8.8.8.8
 
-#Una vez comprobado, lo vamos a hacer servicio
-
-sudo apt-get update; sudo apt-get upgrade -y
-sudo apt-get install iptables-persistent #(SERVIDOR)
 
 
 
