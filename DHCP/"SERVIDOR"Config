@@ -40,12 +40,12 @@ network:
   ethernets:
     ens18:
       dhcp4: true
-      addresses: [193.168.3.3/24]
-      routes:
-      - to: default
-        via: 193.168.3.220
-      nameservers:
-        addresses: [1.1.1.1, 8.8.8.8]
+#      addresses: [193.168.3.3/24]
+#     routes:
+#      - to: default
+#        via: 193.168.3.220
+#      nameservers:
+#        addresses: [1.1.1.1, 8.8.8.8]
 
 
 
