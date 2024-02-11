@@ -8,6 +8,8 @@ sudo ufw allow bind9
 sudo nano /etc/bind/named.conf
 
 #Lo editamos encima de // forwarders:
+#En forwarders descomentamos lo que viene y ponemos lo que viene luego:
+
 listen-on { any; };
 allow-query { localhost; 193.168.3.0/24; };
 forwarders {
@@ -15,4 +17,5 @@ forwarders {
 };
 ....
 dnssec-validation no;
-#listen..
+#listen-on-v6 { any; };  #Comentamos esta línea
+};
