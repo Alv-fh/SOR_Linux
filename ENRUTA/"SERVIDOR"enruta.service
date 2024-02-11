@@ -1,10 +1,19 @@
-#Crearemos en /home/usuario/services el siguiente código
+#Para empezar instalaremos iptables-persistent
+sudo apt-get install iptables-persistent
+#Creamos el siguiente directorio
+mkdir /home/usuario/services el siguiente código
 #Ahora crearemos un servicio de enrutamiento para que al iniciar la máquina, haga enrutamiento
+nano enruta.service
 
+#!/bin/bash
 [Unit]
-Description=Script service
-[Service]
-ExecStart=/home/usuario/scripts/enruta.sh
+Description=Service enrutamiento
+After=network.target network-online.target
+Wants=network-online.target
+
+[Services]
+ExecStart=/home/usuario/services/enruta.sh
+
 [Install]
 WantedBy=multi-user.target
 
