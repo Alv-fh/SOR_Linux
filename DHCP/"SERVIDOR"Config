@@ -23,7 +23,7 @@ subnet 193.168.3.0 netmask 255.255.255.0 {
 # sudo dhcpd -t -cf /etc/dhcp/dhcpd.conf
 
 #Y ahora debemos de poner la tarjeta, para ello 
-# sudo nano /etc/default/isc-dhcp/server
+# sudo nano /etc/default/isc-dhcp-server
 
 #Al entrar nos saldrá algo así:
 
