@@ -1,1 +1,18 @@
+#Lo primero es instalar el servicio bind9 y bind9-utils
+sudo apt-get update; sudo apt-get install bind9 bind9-utils
 
+#Lo siguiente es permitir el tráfico a través del firewall
+sudo ufw allow bind9
+
+#Lo siguiente es editar el archivo de configuración /etc/bind/named.conf
+sudo nano /etc/bind/named.conf
+
+#Lo editamos:
+listen-on { any; };
+allow-query { localhost; 193.168.3.0/24; };
+forwarders {
+  8.8.8.8;
+};
+....
+dnssec-validation no;
+#listen..
