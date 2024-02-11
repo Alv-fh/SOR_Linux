@@ -104,33 +104,7 @@ sudo systemctl restart bind9
 sudo systemctl status bind9
 
 #Si ahora hago un ping en el cliente a servidor.micentro.edu resolverá con la ip que hemos puesto
+ping servidor.micentro.edu
+
 #Si hacemos un ping a equipo01, resolverá con la ip del cliente, que es la que hemos puesto
-#Si hacemos host equipo01
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ping equipo01
