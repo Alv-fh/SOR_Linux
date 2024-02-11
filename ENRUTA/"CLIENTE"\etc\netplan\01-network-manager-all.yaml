@@ -10,13 +10,14 @@ network:
   renderer: networkd
   ethernets:
     ens18:
+      dhcp: false
       addresses: [193.168.3.2/24]
       routes:
       - to: default
         via: 193.168.3.220
       nameservers:
-        search: [micentro.edu]
-        addresses: [193.168.3.220, 8.8.8.8]
+        addresses: [1.1.1.1, 8.8.8.8]
+    
 
 #Una vez hecho esto, ponemos:
 #==============================================================================================
