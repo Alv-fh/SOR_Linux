@@ -13,9 +13,9 @@ sudo nano /etc/bind/named.conf
 listen-on { any; };
 allow-query { localhost; 193.168.3.0/24; };
 forwarders {
-  8.8.8.8;
+       8.8.8.8;
 };
 ....
-dnssec-validation no;
+dnssec-validation no;  #Si no utilizamos dns secundario, lo ponemos así
 #listen-on-v6 { any; };  #Comentamos esta línea
 };
