@@ -1,0 +1,38 @@
+sudo apt-get update  #Instala de Internet los nuevos paquetes.
+sudo apt-get upgrade  #Compara los paquetes que has instalado con los del ordenador y los cambia por los antiguos
+sudo apt-get autoremove  #Elimina los paquetes antiguos
+sudo apt-get autoclean  #Limpia el catálogo
+#===========================================================================================================================
+
+top  #Programa para ver todo en tiempo real del ordenador
+sudo kill PID  #Para cerrar el proceso que quieras, PID es el número del proceso
+sudo xkill  #Lo mismo pero de manera gráfica
+htop  #Programa igual que top pero más bonito visualmente
+whoami  #Quién está en la máquina
+who  #Quien soy
+ctrl + alt + f1  #Abrir el ordenador en modo terminal
+ctrl + alt + f7  #Abrir el ordenador en modo gráfico
+
+#============================================================================================================================
+
+useradd  #Crear usuario
+  1)  -g  #Añadir a grupo
+  2)  -d  (/home/usuario)  #Elige el directorio del usuario
+  3)  -m  #Crea el directorio
+  4)  -s  (/bin/bash)  #Indica el shell
+  5)  Nombre de usuario
+sudo useradd -g 2ssmra -d /home/alvaro -m -s /bin/bash khalid
+
+sudo cat /etc/shadow  #Para ver la clave privada y los usuarios
+sudo passwd usuario  #Para poner contraseña del usuario
+groupadd  #Para crear un grupo
+
+#===============================================================================================================================
+
+netplan generate  #Revisar la sintaxis del archivo .yaml
+netplan apply  #Para aplicar los cambios (Se hace 2 veces)
+/etc/netplan/01-network-manager-all.yaml  #Fichero de configuración de red
+#EN SERVIDOR NO SE PONE GATEWAY
+ip a  #Ver tarjeta de red
+ip r  #Ver puerta de enlace
+
