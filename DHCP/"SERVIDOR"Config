@@ -1,18 +1,21 @@
 #Para empezar haremos un:
-#sudo apt-get update
-#sudo apt-get install isc-dhcp-server
+sudo apt-get update
+sudo apt-get install isc-dhcp-server
 
-#Ahora configuraremos el fichero de esta manera:
+#Entramos en la configuración del servicio
+nano /etc/dhcp/dhcpd.conf
+
+#Configuramos al final del fichero esto:
+
 group SMR {
 subnet 193.168.3.0 netmask 255.255.255.0 {
-        range 193.168.3.100 193.168.3.200;
+        range 193.168.3.100 193.168.3.200
         option domain-name-servers 8.8.8.8;
         option domain-name "micentro.edu";
         option subnet-mask 255.255.255.0;
         option routers 193.168.3.220;
         option broadcast-address 193.168.3.255;
 }
-
 }
 #====================================================================================================
 #Importante cargar el fichero, para ello:
@@ -28,3 +31,26 @@ INTERFACESv4="ens19"
 INTERFACESv6=""
 
 #En la interfazv4 ponemos el nombre de la tarjeta de red cliente.
+
+#Y ahora editamos el .yaml del cliente:
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens18:
+      dhcp4: true
+      addresses: [193.168.3.3/24]
+      routes:
+      - to: default
+        via: 193.168.3.220
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]
+
+
+
+
+
+
+
+
