@@ -3,7 +3,7 @@
 
 #!/bin/bash
 echo "1" > /proc/sys/net/ipv4/ip_forward
-iptables -t nat -A MASQUERADE -s 193.168.3.0 -o ens18 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 193.168.3.0 -o ens18 -j MASQUERADE
 iptables -A FORWARD -j ACCEPT
 
 #Se le da permisos
