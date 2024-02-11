@@ -1,0 +1,19 @@
+ENRUTAMIENTO
+1.-Actualizar paquetes
+2.-Configurar .yaml del servidor
+3.-Configurar .yaml del cliente
+4.-Script en el servidor del bit de forward
+5.-Crear servicio de enrutamiento
+
+DHCP
+1.-Descargar paquete isc-dhcp-server
+2.-Configurar el fichero /etc/dhcp/dhcpd.conf
+3.-Cargar fichero dhcpd -t -cf /etc/dhcp/dhcpd.conf
+4.-Poner la interfaz en el fichero /etc/default/isc-dhcp-server
+5.-Poner el dhcp: true en el .yaml del cliente
+
+DNS
+1.-Descargar paquete bind9 bind9-utils
+2.-Permitir tráfico a través del firewall ufw allow bind9
+3.-Configurar el fichero /etc/bind/named.conf
+
