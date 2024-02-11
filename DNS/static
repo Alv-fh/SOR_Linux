@@ -7,7 +7,7 @@ sudo ufw allow bind9
 #Lo siguiente es editar el archivo de configuración /etc/bind/named.conf.options
 sudo nano /etc/bind/named.conf
 
-#Lo editamos:
+#Lo editamos encima de // forwarders:
 listen-on { any; };
 allow-query { localhost; 193.168.3.0/24; };
 forwarders {
