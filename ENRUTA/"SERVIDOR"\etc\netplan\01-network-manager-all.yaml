@@ -6,7 +6,7 @@
 # Let NetworkManager manage all devices on this system
 network:
   version: 2
-    renderer: NetworkManager
+    renderer: networkd
     ethernets:
       ens18:
         dhcp4: true
