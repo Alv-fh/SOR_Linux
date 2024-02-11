@@ -12,8 +12,7 @@ network:
         dhcp4: true
       ens19:
         addresses: [193.168.3.220/24]
-        nameservers:        
-          search: [micentro.edu]
+        nameservers:
           addresses: [1.1.1.1, 8.8.8.8]
 
 #========================================================================================
