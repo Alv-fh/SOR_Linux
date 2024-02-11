@@ -4,7 +4,7 @@ sudo apt-get update; sudo apt-get install bind9 bind9-utils
 #Lo siguiente es permitir el tráfico a través del firewall
 sudo ufw allow bind9
 
-#Lo siguiente es editar el archivo de configuración /etc/bind/named.conf
+#Lo siguiente es editar el archivo de configuración /etc/bind/named.conf.options
 sudo nano /etc/bind/named.conf
 
 #Lo editamos:
