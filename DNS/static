@@ -70,7 +70,59 @@ localhost. se cambia por servidor.micentro.edu.
 root.localhost. se cambia por root.micentro.edu.
 #Eliminamos  @
 #Cambiamos
-IN       NS       servidor.micentro.edu.
+               IN       NS       servidor.micentro.edu.
+servidor       IN       A       193.168.3.220
+equipo01       IN       A       193.168.3.3
+server         IN       CNAME   servidor
+
+#Ahora copiamos esto a la inversa
+sudo cp /etc/bind/zonas/db.micentro.edu /etc/bind/zonas/db.3.168.193
+
+#Lo abrimos
+sudo nano /etc/bind/zonas/db.3.168.193
+
+#Y hacemos los siguientes cambios
+#Crearemos un puntero para que en la zona inversa apunte directamente a nuestro servidor
+#Eliminamos equipo01 y server
+193.168.3.220       IN       PTR       servidor.micentro.edu
+
+#Ahora comprobamos si hay errores de sintaxis en algún lado
+#Para el archivo de zonas
+sudo named-checkconf /etc/bind/named.conf.local
+
+#Para comprobar las zonas. Debe salir
+#zone micentro.edu/IN: loaded serial 2
+#OK
+sudo named-checkzone micentro.edu /etc/bind/zonas/db.micentro.edu
+
+#Lo mismo para la inversa
+sudo named-checkzone 3.168.193 /etc/bind/zonas/db.3.168.193
+
+#Ahora reiniciamos el servicio y hacemos un status
+
+sudo systemctl restart bind9
+sudo systemctl status bind9
+
+#Si ahora hago un ping en el cliente a servidor.micentro.edu resolverá con la ip que hemos puesto
+#Si hacemos un ping a equipo01, resolverá con la ip del cliente, que es la que hemos puesto
+#Si hacemos host equipo01
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
