@@ -4,6 +4,7 @@ ENRUTAMIENTO
 3.-Configurar .yaml del cliente
 4.-Script en el servidor del bit de forward
 5.-Crear servicio de enrutamiento
+6.-Comprobar que hace ping tanto en el servidor como en el cliente
 
 DHCP
 1.-Descargar paquete isc-dhcp-server
@@ -11,9 +12,20 @@ DHCP
 3.-Cargar fichero dhcpd -t -cf /etc/dhcp/dhcpd.conf
 4.-Poner la interfaz en el fichero /etc/default/isc-dhcp-server
 5.-Poner el dhcp: true en el .yaml del cliente
+6.-Comprobar que se ha cambiado la IP
 
 DNS
 1.-Descargar paquete bind9 bind9-utils
 2.-Permitir tráfico a través del firewall ufw allow bind9
 3.-Configurar el fichero /etc/bind/named.conf
+4.-Poner -4 en el fichero /etc/default/named
+5.-Comprobar que no hay errores
+6.-Reiniciar el servicio
+7.-Crear directorio zonas
+8.-Copiar la plantilla /etc/bind/db.local a /etc/bind/zonas/db.micentro.edu y a db.3.168.193
+9.-Configurar cada zona, para la inversa copiamos la normal y cambiamos lo que necesitemos.
+10.-Comprobar archivo de zonas (sudo named-checkconf /etc/bind/named.conf.local)
+11.-Comprobar zonas (sudo named-checkzone micentro.edu /etc/bind/zonas/db.micentro.edu) lo mismo para inversa
+12.-Reiniciar servicio
+13.-Comprobar en el cliente
 
