@@ -3,7 +3,7 @@ sudo apt-get update; sudo apt-get install bind9 bind9-utils
 
 #Lo siguiente es permitir el tráfico a través del firewall
 sudo ufw allow bind9
-
+#==============================================================================================
 #Lo siguiente es editar el archivo de configuración /etc/bind/named.conf.options
 sudo nano /etc/bind/named.conf
 
@@ -19,3 +19,66 @@ forwarders {
 dnssec-validation no;  #Si no utilizamos dns secundario, lo ponemos así
 #listen-on-v6 { any; };  #Comentamos esta línea
 };
+#==============================================================================================
+#Ahora lo siguiente que hay que hacer es entrar en /etc/default/named y poner -4
+sudo nano /etc/default/named
+
+#Editamos:
+OPTIONS="-u bind -4"
+
+#==============================================================================================
+#Ahora todavía el cliente no hace ping a google, pero cuando resetemos el servidor sí
+#Antes tenemos que checkear que no hay errores, sino sale nada, perfecto
+sudo named-checkconf
+
+#Ahora reseteamos
+sudo systemctl restart bind9
+
+#Ahora status
+sudo systemctl status bind9
+
+#Ahora si resuelve en cliente a google.com
+
+#==============================================================================================
+
+#Ahora tenemos que configurar las zonas, para ello entramos en /etc/bind/named.conf.local
+sudo nano /etc/bind/named.conf.local
+
+#Y añadimos lo siguiente:
+
+zone "micentro.edu" IN {
+       type master;
+       file "/etc/bind/zonas/db.micentro.edu";
+};
+zone "3.168.193.in-addr.arpa" {
+       type master;
+       file "/etc/bind/zonas/db.3.168.193";
+};
+#==============================================================================================
+#Ahora creamos el directorio zonas
+sudo mkdir /etc/bind/zonas
+
+#Y para tener la plantilla del db.micentro.edu, nos copiaremos de /etc/bind/db.local
+sudo cp /etc/bind/db.local /etc/bind/zonas/db.micentro.edu
+sudo cp /etc/bind/db.local /etc/bind/zonas/db.3.168.193
+
+#       A es una dirección
+#       NS es name server
+#       AAAA se borra, es ipv6
+#Configuración
+localhost. se cambia por servidor.micentro.edu.
+root.localhost. se cambia por root.micentro.edu.
+#Eliminamos  @
+#Cambiamos
+IN       NS       servidor.micentro.edu.
+
+
+
+
+
+
+
+
+
+
+
