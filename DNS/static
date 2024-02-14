@@ -58,9 +58,9 @@ zone "3.168.193.in-addr.arpa" {
 #Ahora creamos el directorio zonas
 sudo mkdir /etc/bind/zonas
 
-#Y para tener la plantilla del db.micentro.edu, nos copiaremos de /etc/bind/db.local
-sudo cp /etc/bind/db.local /etc/bind/zonas/db.micentro.edu
-sudo cp /etc/bind/db.local /etc/bind/zonas/db.3.168.193
+#Y para tener la plantilla del db.micentro.edu, nos copiaremos de /etc/bind/db.empty
+sudo cp /etc/bind/db.empty /etc/bind/zonas/db.micentro.edu
+sudo cp /etc/bind/db.empty /etc/bind/zonas/db.3.168.193
 
 #       A es una dirección
 #       NS es name server
@@ -96,7 +96,7 @@ sudo named-checkconf /etc/bind/named.conf.local
 sudo named-checkzone micentro.edu /etc/bind/zonas/db.micentro.edu
 
 #Lo mismo para la inversa
-sudo named-checkzone 3.168.193 /etc/bind/zonas/db.3.168.193
+sudo named-checkzone db.3.168.193 /etc/bind/zonas/db.3.168.193
 
 #Ahora reiniciamos el servicio y hacemos un status
 
@@ -108,3 +108,20 @@ ping servidor.micentro.edu
 
 #Si hacemos un ping a equipo01, resolverá con la ip del cliente, que es la que hemos puesto
 ping equipo01
+
+#========================================================================================================
+
+#Configuración del archivo resolv.conf       |       Esto es para el comando host
+#Entonces entramos en /etc/resolv.conf
+nano /etc/resolv.conf
+
+#Ahora si queremos que al poner ( host servidor ) nos salga la IP del servidor. Tenemos que añadir lo siguiente:
+                                                                 
+# --- BEGIN PVE ---
+search iesmartinezm.es
+nameserver 172.22.226.42
+search afalcon.com
+# --- END PVE ---
+
+#Añadimos search afalcon.com al final para que añada eso al final. Es decir, si yo pongo host servidor, pues sería
+# a host servidor.afalcon.com
