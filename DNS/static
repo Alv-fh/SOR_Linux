@@ -50,7 +50,7 @@ zone "micentro.edu" IN {
        type master;
        file "/etc/bind/zonas/db.micentro.edu";
 };
-zone "3.168.193.in-addr.arpa" {
+zone "3.168.193.in-addr.arpa" IN {
        type master;
        file "/etc/bind/zonas/db.3.168.193";
 };
