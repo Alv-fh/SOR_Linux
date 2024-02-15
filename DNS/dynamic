@@ -151,6 +151,12 @@ INTERFACESv6=""
 sudo systemctl restart bind9
 sudo systemctl restart isc-dhcp-server
 
+#ARCHIVO RESOLV.CONF
+#Entramos en /etc/resolv.conf
+
+nameserver 193.168.3.220
+option edns0 trust-ad
+search micentro.edu
 
 #COMPROBACIONES
 
