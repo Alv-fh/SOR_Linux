@@ -89,6 +89,52 @@ $TTL    86400
 @          	     IN      NS      servidor.micentro.edu.
 193.168.3.220        IN      PTR       servidor.micentro.edu
 
+#========================================================================
+
+#COMPROBAMOS LAS ZONAS
+nano named-checkzone micentro.edu /etc/bind/zonas/db.micentro.edu
+nano named-checkzone 3.168.193.in-addr.arpa /etc/bind/zonas/db.3.168.193
+
+
+#CREAMOS ACCESOS DIRECTOS
+cd /var/cache/bind
+
+ln -s /etc/bind/zonas/db.micentro.edu
+ls -s /etc/bind/zonas/3.168.193
+
+#CONFIGURAMOS ZONAS EN DHCP
+nano /etc/dhcp/dhcpd.conf
+
+option domain-name "micentro.edu";
+option domain 193.168.3.220;
+
+default-lease-time 600;
+max-lease-time 7200;
+#...
+ddns-update-style interim; 	#Viene comentado pero cambiamos (no) por (interim)
+ignore client-updates;
+update-static-leases on;
+ddns-domainname "micentro.edu";
+ddns-domainname "3.168.193.in-addr.arpa";
+#....
+authoritative 			#Viene comentado y lo tenemos que descomentar
+#....
+log-facility local7,
+#....
+include "/etc/bind/ddns.key";
+allow-updates { key DDNS_UPDATE; };
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
@@ -97,4 +143,6 @@ $TTL    86400
 
 
   
-  
+
+
+
