@@ -133,7 +133,7 @@ zone 3.168.193.in-addr.arpa {
 	key DDNS_UPDATE;
 }
 
-subnet 192.168.3.0 netmask 255.255.255.0 {
+subnet 193.168.3.0 netmask 255.255.255.0 {
 	range 193.168.3.50 193.168.3.60;
 	option routers 193.168.4.220;
 }
