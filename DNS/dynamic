@@ -100,7 +100,7 @@ nano named-checkzone 3.168.193.in-addr.arpa /etc/bind/zonas/db.3.168.193
 cd /var/cache/bind
 
 ln -s /etc/bind/zonas/db.micentro.edu
-ls -s /etc/bind/zonas/3.168.193
+ln -s /etc/bind/zonas/3.168.193
 
 #CONFIGURAMOS ZONAS EN DHCP
 nano /etc/dhcp/dhcpd.conf
