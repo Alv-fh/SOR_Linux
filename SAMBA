@@ -1,0 +1,53 @@
+#Para empezar
+sudo apt-get update
+sudo apt-get install samba
+
+#Comprobamos el estado del servicio
+systemctl status smb
+
+#Entramos en el archivo de configuracuón de samba
+nano /etc/samba/smb.conf
+
+#Y al final del archivo añadimos lo siguiente
+[public]
+  path = /samba/public
+  browseable: yes
+  guest ok = yes
+  guest only
+  read only = no
+  force user = nobody
+  force create mode = 0777
+  force directory mode = 0777
+
+#Hacemos un testparm para comprobar el archivo. En el caso de que salga error
+#encima de force create mode saldría available no
+testparm
+
+#Ahora reiniciamos el servicio
+systemctl restart smbd
+
+#Creamos la carpeta pública
+mkdir -p /samba/public
+
+#PERMISOS a la carpeta
+chown -R nobody:nogroup /samba/public
+chmod -R 0775 /samba/public
+chgrp sambashare /samba/public
+
+#Ahora reiniciamos el servicio
+systemctl restart smbd
+
+#=====================================================================================
+
+#Ahora en cliente tenemos que irnos al explorador de archivos y buscar en la barra de buscador de archivos
+smb://193.168.3.220/public
+
+#Podremos elegir entre anónimo, o con usuario
+#Ahora la carpeta está vacía, pero para comprobar que funciona creamos desde el servidor un fichero
+
+touch prueba /samba/public/
+
+#Y en el cliente le damos para atrás y nos volvemos a meter en la carpeta y debería salir el fichero.
+
+
+
