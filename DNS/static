@@ -5,7 +5,7 @@ sudo apt-get update; sudo apt-get install bind9 bind9-utils
 sudo ufw allow bind9
 #==============================================================================================
 #Lo siguiente es editar el archivo de configuración /etc/bind/named.conf
-sudo nano /etc/bind/named.conf
+sudo nano /etc/bind/named.conf.options
 
 #Lo editamos encima de // forwarders:
 #En forwarders descomentamos lo que viene y ponemos lo que viene luego:
@@ -91,12 +91,12 @@ sudo nano /etc/bind/zonas/db.3.168.193
 sudo named-checkconf /etc/bind/named.conf.local
 
 #Para comprobar las zonas. Debe salir
-#zone micentro.edu/IN: loaded serial 2
+#zone micentro.edu IN: loaded serial 2
 #OK
 sudo named-checkzone micentro.edu /etc/bind/zonas/db.micentro.edu
 
 #Lo mismo para la inversa
-sudo named-checkzone db.3.168.193 /etc/bind/zonas/db.3.168.193
+sudo named-checkzone 3.168.193.in-addr.arpa /etc/bind/zonas/db.3.168.193
 
 #Ahora reiniciamos el servicio y hacemos un status
 
