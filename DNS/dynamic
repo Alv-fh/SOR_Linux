@@ -106,7 +106,7 @@ ln -s /etc/bind/zonas/3.168.193
 nano /etc/dhcp/dhcpd.conf
 
 option domain-name "micentro.edu";
-option domain 193.168.3.220;
+option domain-name-servers 193.168.3.220;
 
 default-lease-time 600;
 max-lease-time 7200;
