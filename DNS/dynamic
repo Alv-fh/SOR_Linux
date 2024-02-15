@@ -3,7 +3,7 @@
 sudo apt-get update; sudo apt-get install isc-dhcp-server bind9 bind9-utils -y
 
 #GENERAR CLAVE PRIVADA
-ddns-confgen -K DDNS_UPDATE
+ddns-confgen -k DDNS_UPDATE
 
 #CREAR FICHERO ddns.key CON LA KEY GENERADA
 nano ddns.key
