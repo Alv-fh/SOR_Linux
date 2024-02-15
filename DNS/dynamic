@@ -114,14 +114,14 @@ max-lease-time 7200;
 ddns-update-style interim; 	#Viene comentado pero cambiamos (no) por (interim)
 ignore client-updates;
 update-static-leases on;
-ddns-domainname "micentro.edu";
-ddns-domainname "3.168.193.in-addr.arpa";
+ddns-domainname "micentro.edu.";
+ddns-rev-domainname "3.168.193.in-addr.arpa.";
 #....
 authoritative 			#Viene comentado y lo tenemos que descomentar
 #....
 log-facility local7		#Viene comentado y lo tenemos que descomentar
 #....
-include "/etc/bind/ddns.key
+include "/etc/dhcp/ddns.key
 	
 zone micentro.edu {
 	primary 127.0.0.1;
