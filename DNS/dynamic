@@ -152,6 +152,15 @@ sudo systemctl restart bind9
 sudo systemctl restart isc-dhcp-server
 
 
+#COMPROBACIONES
+
+#Desde servidor
+nslookup servidor.micentro.edu
+nslookup cliente.micentro.edu
+host cliente
+host servidor
+nslookup google.com
+
 
 
 
