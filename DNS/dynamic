@@ -121,8 +121,42 @@ authoritative 			#Viene comentado y lo tenemos que descomentar
 #....
 log-facility local7		#Viene comentado y lo tenemos que descomentar
 #....
-include "/etc/bind/ddns.key";
-allow-updates { key DDNS_UPDATE; };
+include "/etc/bind/ddns.key
+	
+zone micentro.edu {
+	primary 127.0.0.1;
+	key DDNS_UPDATE;
+}
+
+zone 3.168.193.in-addr.arpa {
+	primary 127.0.0.1;
+	key DDNS_UPDATE;
+}
+
+subnet 192.168.3.0 netmask 255.255.255.0 {
+	range 193.168.3.50 193.168.3.60;
+	option routers 193.168.4.220;
+}
+
+#COMRPOBAMOS DHCP
+dhcpd -t
+
+#PONEMOS LA INTERFAZ QUE VA A TENER DHCP
+nano /etc/default/isc-dhcp-server
+
+INTERFACESv4="ens19"
+INTERFACESv6=""
+
+#REINICIAMOS
+sudo systemctl restart bind9
+sudo systemctl restart isc-dhcp-server
+
+
+
+
+
+
+
 
 
 
