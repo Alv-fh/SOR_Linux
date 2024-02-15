@@ -119,10 +119,11 @@ ddns-domainname "3.168.193.in-addr.arpa";
 #....
 authoritative 			#Viene comentado y lo tenemos que descomentar
 #....
-log-facility local7,
+log-facility local7		#Viene comentado y lo tenemos que descomentar
 #....
 include "/etc/bind/ddns.key";
 allow-updates { key DDNS_UPDATE; };
+
 
 
 
