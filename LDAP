@@ -1,0 +1,108 @@
+#Para empezar comprobamos que tenemos conexión con el exterior y conexión con cliente
+
+#Cambiamos el hostname
+sudo hostnamectl set-hostname ldapservidor.micentro.edu
+
+#Comprobamos
+hostname
+
+#Ahora tenemos que añadir en /etc/hostname el nuevo y también la ip estática del servidor
+sudo nano /etc/hosts
+
+#Cambiamos la 127.0.1.1 y añadimos
+127.0.0.1 ldapservidor.micentro.edu
+193.168.3.220  ldapservidor.micentro.edu
+
+#Actualizamos los paquetes en el servidor y cliente
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
+
+#Instalamos el servicio ldap
+sudo apt install slapd ldap-utils -y
+
+#Ponemos password
+usuario
+
+#Configuración
+sudo dpkg-reconfigure slapd
+
+#Para empezar le damos a no para configurarlos nosotros
+No
+
+#Lo siguiente es el nombre del dominio
+micentro.edu
+
+#Ahora eliminamos el .edu
+micentro
+
+#Ponemos password del administrador
+usuario
+
+#Ahora le damos a que sí que se borre la base de datos cuando se purgue el paquete slapd
+Sí
+
+#Desear mover la base de datos
+Sí
+
+#Para mostrar información de dominio
+sudo slapcat
+
+#Creamos y editamos el fichero ou.ldif  (Unidad Organizativa)                                                 
+dn: ou=marketing,dc=micentro,dc=edu
+objectClass: top
+objectClass: organizationalUnit
+ou: marketing
+
+#Ahora creamos las unidades organizativas
+sudo ldapadd -x -D cn=admin,dc=micentro,dc=edu -W -f ou.ldif
+
+#Comprobación
+sudo slapcat
+
+#Creamos y editamos el fichero gpr.ldif (grupos)
+dn: cn=marketing,ou=marketing,dc=micentro,dc=edu
+objectClass: top
+objectClass: posixGroup
+gidNumber: 10000
+cn: marketing
+
+#Ahora creamos los grupos
+sudo ldapadd -x -D cn=admin,dc=micentro,dc=edu -W -f gpr.ldif
+
+#Comprobación
+sudo slapcat
+
+#Creamos y editamos el fichero usr.ldif (usuarios)
+dn: uid=gregor,ou=marketing,dc=micentro,dc=edu
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+objectClass: person
+cn: gregor
+ou: marketing
+uidNumber: 2000
+gidNumber: 10000
+homeDirectory: /home/gregor
+loginShell: /bin/bash
+userPassword: usuario
+sn: Jimenez
+mail: gregor@gmail.com
+givenName: Gregor
+
+#Ahora creamos los usuarios
+sudo ldapadd -x -D cn=admin,dc=micentro,dc=edu -W -f usr.ldif
+
+#Comprobación
+sudo slapcat
+
+#Comando para ver todos los usuarios
+ldapsearch -xLLL -b "dc=micentro,dc=edu" uid=* sn givenName cn
+
+#Si queremos cambiar algún elemento, nos creamos el fichero cambios.ldif
+
+
+
+
+
+
