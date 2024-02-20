@@ -11,7 +11,7 @@ Description=Service enrutamiento
 After=network.target network-online.target
 Wants=network-online.target
 
-[Services]
+[Service]
 ExecStart=/home/usuario/services/enruta.sh
 
 [Install]
