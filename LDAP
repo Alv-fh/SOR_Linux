@@ -155,7 +155,7 @@ group:   files ldap
 shadow:  files ldap
 
 #Ahora hacemos un getent passwd
-sudo getent passwd
+getent passwd
 
 #Si sale algo así, es que vamos bien
 cliente1:*:2000:10000:cliente1:/home/cliente1:/bin/bash
