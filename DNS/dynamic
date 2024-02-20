@@ -121,7 +121,7 @@ authoritative 			#Viene comentado y lo tenemos que descomentar
 #....
 log-facility local7		#Viene comentado y lo tenemos que descomentar
 #....
-include "/etc/dhcp/ddns.key
+include "/etc/dhcp/ddns.key"
 	
 zone micentro.edu {
 	primary 127.0.0.1;
