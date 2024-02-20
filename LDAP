@@ -147,6 +147,25 @@ cn=admin,dc=micentro,dc=edu
 #Si nos hemos equivocado en la configuración podemos hacer un
 sudo dpkg-reconfigure ldap-auth-config
 
+#Ahora vamos a configurar el archivo /etc/nsswitch.conf
+sudo nano /etc/nsswitch.conf
+#Las tres primeras lineas vienen por defecto systemd
+passwd:  files ldap
+group:   files ldap
+shadow:  files ldap
+
+#Ahora hacemos un getent passwd
+sudo getent passwd
+
+#Si sale algo así, es que vamos bien
+cliente1:*:2000:10000:cliente1:/home/cliente1:/bin/bash
+
+#Ahora configuramos el archivo
+sudo nano /etc/pam.d/common-session
+
+#Vamos al final y tenemos que poner
+session optional            pam_mkhomedir.so skel=/etc/skel umask=077
+
 
 
 
