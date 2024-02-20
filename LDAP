@@ -99,18 +99,32 @@ sudo slapcat
 #Comando para ver todos los usuarios
 ldapsearch -xLLL -b "dc=micentro,dc=edu" uid=* sn givenName cn
 
-#Si queremos cambiar algún elemento, nos creamos el fichero cambios.ldif
+#Si queremos cambiar algún elemento, nos creamos el fichero cambios.ldiF
+dn: cn=marketing,ou=marketing,dc=micentro,dc=edu
+changetype: modify
+replace: mail
+mail:nuevo@gmail.com
+
+#Y ahora hacemos la modificación
+ldapmodify -x -D cn=admin,dc=micentro,dc=edu -W -f cambios.ldif
+
+#Para eliminar un usuario
+ldapdelete -x -W -D 'cn=admin,dc=micentro,dc=edu' "uid=cliente2,ou=marketing,dc=micentro,dc=edu"
+
 
 #==============================================================================================
 #Ahora en el lado del cliente
 #Hacemos el mismo proceso de instalación y de actualización.
 #Actualizamos los paquetes en el servidor y cliente
+#Antes comprobamos que tenemos conectividad con el servidor
+ping 193.168.3.220
+#Y luego
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 
 #Instalamos el servicio ldap
-sudo apt install libnss-ldap libpam-ldap ldap-utils -y
+sudo apt-get install libnss-ldap libpam-ldap ldap-utils -y
 
 #Ahora ponemos 
 ldap://193.168.3.220
@@ -124,8 +138,14 @@ dc=micentro,dc=edu
 #Le damos
 Sí
 
+#Y le damos
+No
+
 #Y ponemos 
 cn=admin,dc=micentro,dc=edu
+
+#Si nos hemos equivocado en la configuración podemos hacer un
+sudo dpkg-reconfigure ldap-auth-config
 
 
 
