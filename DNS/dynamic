@@ -92,8 +92,8 @@ $TTL    86400
 #========================================================================
 
 #COMPROBAMOS LAS ZONAS
-nano named-checkzone micentro.edu /etc/bind/zonas/db.micentro.edu
-nano named-checkzone 3.168.193.in-addr.arpa /etc/bind/zonas/db.3.168.193
+named-checkzone micentro.edu /etc/bind/zonas/db.micentro.edu
+named-checkzone 3.168.193.in-addr.arpa /etc/bind/zonas/db.3.168.193
 
 
 #CREAMOS ACCESOS DIRECTOS
