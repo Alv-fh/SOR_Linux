@@ -100,7 +100,7 @@ sudo slapcat
 ldapsearch -xLLL -b "dc=micentro,dc=edu" uid=* sn givenName cn
 
 #Si queremos cambiar algún elemento, nos creamos el fichero cambios.ldiF
-dn: cn=marketing,ou=marketing,dc=micentro,dc=edu
+dn: uid=gregor,ou=marketing,dc=micentro,dc=edu
 changetype: modify
 replace: mail
 mail:nuevo@gmail.com
