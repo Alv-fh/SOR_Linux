@@ -117,11 +117,11 @@ update-static-leases on;
 ddns-domainname "micentro.edu.";
 ddns-rev-domainname "3.168.193.in-addr.arpa.";
 #....
-authoritative 			#Viene comentado y lo tenemos que descomentar
+authoritative; 			#Viene comentado y lo tenemos que descomentar
 #....
-log-facility local7		#Viene comentado y lo tenemos que descomentar
+log-facility local7;		#Viene comentado y lo tenemos que descomentar
 #....
-include "/etc/dhcp/ddns.key"
+include "/etc/dhcp/ddns.key";
 	
 zone micentro.edu {
 	primary 127.0.0.1;
