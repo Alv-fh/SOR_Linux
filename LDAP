@@ -101,7 +101,31 @@ ldapsearch -xLLL -b "dc=micentro,dc=edu" uid=* sn givenName cn
 
 #Si queremos cambiar algún elemento, nos creamos el fichero cambios.ldif
 
+#==============================================================================================
+#Ahora en el lado del cliente
+#Hacemos el mismo proceso de instalación y de actualización.
+#Actualizamos los paquetes en el servidor y cliente
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
 
+#Instalamos el servicio ldap
+sudo apt install libnss-ldap libpam-ldap ldap-utils -y
+
+#Ahora ponemos 
+ldap://193.168.3.220
+
+#Ponemos
+dc=micentro,dc=edu
+
+#Version
+3
+
+#Le damos
+Sí
+
+#Y ponemos 
+cn=admin,dc=micentro,dc=edu
 
 
 
